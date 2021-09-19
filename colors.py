@@ -1,0 +1,3 @@
+# COLORS constants
+PRIMARY_COLOR = "#077187"
+SECONDARY_COLOR = "#74a57f"
