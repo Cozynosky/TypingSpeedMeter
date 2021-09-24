@@ -1,6 +1,6 @@
 import tkinter as tk
 from menu import Menu
-from testing import Testing
+from words_generator import WordsGenerator
 from colors import *
 
 
@@ -10,13 +10,15 @@ class App(tk.Tk):
         # prepare window
         self.geometry("500x600")
         self.resizable(False,False)
+        self.title("Typing speed meter")
+        # prepare controller for switching windows
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (Menu, Testing):
+        for F in (Menu, WordsGenerator):
             frame_name = F.__name__
             frame = F(controller=self, parent=container)
             self.frames[frame_name] = frame
@@ -26,6 +28,7 @@ class App(tk.Tk):
 
     def show_frame(self, page_name):
         """"Show a frame for the given page name"""
+
         frame = self.frames[page_name]
         frame.tkraise()
 
