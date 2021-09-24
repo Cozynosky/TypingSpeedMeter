@@ -28,8 +28,9 @@ class App(tk.Tk):
 
     def show_frame(self, page_name):
         """"Show a frame for the given page name"""
-
         frame = self.frames[page_name]
+        if page_name == "WordsGenerator":
+            frame.start_timer()
         frame.tkraise()
 
 

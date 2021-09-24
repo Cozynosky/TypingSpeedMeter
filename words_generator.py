@@ -33,7 +33,6 @@ class WordsGenerator(tk.Frame):
         self.wrong_words_label.place(relx=0.75, y=120, anchor=tk.CENTER)
         self.word_entry.place(relx=0.5, y=300, anchor=tk.CENTER)
         self.time_label.place(relx=0.5, y=50, anchor=tk.CENTER)
-        self.timer()
 
     @staticmethod
     def generate_words():
@@ -44,11 +43,11 @@ class WordsGenerator(tk.Frame):
     def next_word(self):
         return self.generated_words.pop(0)
 
-    def timer(self):
+    def start_timer(self):
         if self.time_left > 0:
             self.time_left -= 1
             self.time_label['text'] = self.time_left
-            self.controller.after(1000, self.timer)
+            self.controller.after(1000, self.start_timer)
         else:
             self.time_left = 60
             self.controller.show_frame("Menu")
