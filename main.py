@@ -9,7 +9,7 @@ class App(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
         # prepare window
         self.geometry("500x600")
-        self.resizable(False,False)
+        self.resizable(False, False)
         self.title("Typing speed meter")
         # prepare controller for switching windows
         container = tk.Frame(self)
@@ -22,7 +22,7 @@ class App(tk.Tk):
             frame_name = F.__name__
             frame = F(controller=self, parent=container)
             self.frames[frame_name] = frame
-            frame["bg"]=PRIMARY_COLOR
+            frame["bg"] = PRIMARY_COLOR
             frame.grid(row=0, column=0, sticky="nsew")
         self.show_frame("Menu")
 
@@ -31,6 +31,7 @@ class App(tk.Tk):
         frame = self.frames[page_name]
         if page_name == "WordsGenerator":
             frame.start_timer()
+            frame.word_entry.focus()
         frame.tkraise()
 
 
