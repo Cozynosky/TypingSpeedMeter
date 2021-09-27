@@ -1,7 +1,7 @@
 import tkinter as tk
 import requests
 from menu import Menu
-from words_generator import WordsGenerator
+from test import Test
 from results import Results
 from colors import *
 
@@ -22,7 +22,7 @@ class App(tk.Tk):
         self.new_test()
 
         self.frames = {}
-        for F in (Menu, WordsGenerator, Results):
+        for F in (Menu, Test, Results):
             frame_name = F.__name__
             frame = F(controller=self, parent=container)
             self.frames[frame_name] = frame
@@ -30,8 +30,12 @@ class App(tk.Tk):
             frame.grid(row=0, column=0, sticky="nsew")
         self.show_frame("Menu")
 
+    def next_word(self):
+        return self.generated_words.pop(0)
+
     def new_test(self):
         self.generated_words = self.generate_words()
+        self.current_word = self.next_word()
         self.correct_words = []
         self.wrong_words = []
         self.time_left = 60
@@ -45,11 +49,12 @@ class App(tk.Tk):
     def show_frame(self, page_name):
         """"Show a frame for the given page name"""
         frame = self.frames[page_name]
-        if page_name == "WordsGenerator":
+        if page_name == "Test":
             frame.start_timer()
+            frame.generate_gui()
             frame.word_entry.focus()
         elif page_name == "Results":
-            pass
+            frame.generate_results()
         frame.tkraise()
 
 
