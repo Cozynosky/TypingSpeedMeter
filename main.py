@@ -38,7 +38,7 @@ class App(tk.Tk):
         self.current_word = self.next_word()
         self.correct_words = []
         self.wrong_words = []
-        self.time_left = 60
+        self.time_left = 5
 
     @staticmethod
     def generate_words():

@@ -2,6 +2,7 @@ import tkinter as tk
 from colors import *
 
 
+
 class Results(tk.Frame):
     def __init__(self, parent, controller):
         self.controller = controller
@@ -14,11 +15,11 @@ class Results(tk.Frame):
         self.chars_per_minute_label = tk.Label(self, bg=PRIMARY_COLOR, fg="white", font=("Myanmar Text"
                                                                                    , 26, "bold"))
         self.reset_button = tk.Button(self, text="Reset", command=self.reset_test, fg="white", bg=SECONDARY_COLOR,
-                                      width=10,
-                                      font=("Myanmar Text", 15, "bold"))
-        self.results_label.place(relx=0.5, y=70, anchor=tk.CENTER)
-        self.words_per_minute_label.place(relx=0.5, y=150, anchor=tk.CENTER)
-        self.chars_per_minute_label.place(relx=0.5, y=200, anchor=tk.CENTER)
+                                      width=10, font=("Myanmar Text", 15, "bold"))
+        # placing widgets
+        self.results_label.place(relx=0.5, y=100, anchor=tk.CENTER)
+        self.words_per_minute_label.place(relx=0.5, y=175, anchor=tk.CENTER)
+        self.chars_per_minute_label.place(relx=0.5, y=225, anchor=tk.CENTER)
         self.reset_button.place(relx=0.5, y=500, anchor=tk.CENTER)
 
     def generate_results(self):

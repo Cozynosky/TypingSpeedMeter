@@ -47,5 +47,4 @@ class Test(tk.Frame):
             self.controller.after(1000, self.start_timer)
         else:
             self.word_entry.delete(0, 'end')
-            self.controller.focus_set()
             self.controller.show_frame("Results")
